@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@500&display=swap');
+* {
+    box-sizing: border-box; /* Esențial pentru ca padding-ul să nu strice lățimea (width) */
+}
+
+/* Previne scroll-ul orizontal pe toată pagina */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+       overflow-x: hidden;
+}
+.main-container {
+    display: flex;
+    width: 100%;
+}
+.menu{
+    flex: 0 0 250px;
+    max-width: 250px;
+    height: 100vh;
+    background-color: rgb(245, 242, 240);
+    overflow: auto;
+    text-align: center;
+    padding-top: 60px; /* Ajustează cifra asta până îți place poziția */
+    box-sizing: border-box;
+}
+.menu div{
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 250px;
+    margin-left: 50px;
+    margin-right: 30px;
+    padding-left: 5px;
+    transition: background-color 0.2s ease; /* Face schimbarea culorii mai "moale" */
+    cursor: pointer;
+    
+}
+.menu div:hover{
+    background-color: rgb(208, 208, 208);
+}
+.menu a{
+    color: #2d3436;
+    display: block;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: start;
+}
+#task{
+    margin-top: 100px;
+}
+.tasks {
+    flex-grow: 1; /* Aceasta forțează secțiunea să ocupe tot spațiul liber până la marginea paginii */
+    padding: 20px 50px; /* Spațiu la interior ca să nu se lipească textul de margini */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aliniază totul la stânga, lângă meniu */
+}
+
+#add{
+    display: none;
+    position: absolute;
+    top: 100px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px; /* Îl facem puțin mai îngust pentru a arăta ca un popup */
+    z-index: 1000;
+    background-color: #ffffff; /* Albul pur arată cel mai bine pentru ferestre */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 
+                0 4px 6px rgba(0, 0, 0, 0.04);
+
+    padding: 30px;
+}
+#text-task{
+display: block;
+height: 20%;
+width: 93%;
+padding: 20px;
+font-size: 20px;
+border: 2px solid #ddd;       /* Spațiu generos în interior */
+border-radius: 10px;    /* Colțuri rotunjite moderne */
+    outline: none;          /* Scoate rama albastră de browser */
+    background-color: white;
+}
+#text-task:focus {
+    border-color: #000000;
+    box-shadow: 0 4px 12px rgba(94, 70, 208, 0.1);
+}
+
+
+#date{
+margin-left: 0px;
+margin-top: 10px;
+padding: 5px;
+padding-left: 20px;
+padding-right: 20px;
+border-radius: 5px;
+font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+font-weight: 500;
+border: 2px solid #d3d2d2;
+    background-color: white;
+}
+#Priority{
+margin-left: 5px;
+padding: 5px;
+padding-left: 20px;
+padding-right: 20px;
+border-radius: 5px;
+font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+font-weight: 500;
+border: 2px solid #d3d2d2;
+    background-color: white;
+
+}
+#date:hover {
+    background-color: #fdf5f4;
+    border-color: #db4c3f;
+    color: #db4c3f;
+}
+
+/* Hover specific pentru Priority (Albastru) */
+#Priority:hover {
+    background-color: #f0f7ff;
+    border-color: #246fe0;
+    color: #246fe0;
+}
+#date:active, #Priority:active,#cancel:active,#submit:active {
+    transform: scale(0.96);    /* Butonul se "apasă" ușor */
+    background-color: #eeeeee;
+}
+
+#cancel{
+    margin-left: 150px;
+    padding: 5px;
+padding-left: 20px;
+padding-right: 20px;
+border-radius: 5px;
+font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+font-weight: 500;
+border: 2px solid #d3d2d2;
+    background-color: white;
+}
+
+#cancel:hover{
+    background-color: red;
+     border-color: #db4c3f;
+    color: #ffffff;
+}
+#submit{
+    padding: 5px;
+padding-left: 20px;
+padding-right: 20px;
+border-radius: 5px;
+font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+font-weight: 500;
+border: 2px solid #d3d2d2;
+    background-color: white;
+}
+#submit:hover{
+    background-color:green;
+     border-color: #2b8149;
+    color: #ffffff;
+}
+
+.priority-container{
+    position: relative;
+    display: inline-block;
+    color: #000000;
+}
+
+.dropdown-content{
+ display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 10;
+    margin-top: 5px;
+}
+.priority-item{
+    width: 100%;
+    padding: 10px;;
+   background-color: transparent;
+    border: none;
+   border-radius: 5px;
+   font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease; /* Efect fin la hover */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.priority-item:hover {
+    background-color: #f3f3f3;
+}
+.main-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+#add, #task-list-container,#task-list-today, #task-list-upcoming{
+    width: 100%; /* Ocupă toată lățimea secțiunii .tasks */
+    max-width: 800px; /* Opțional: pune o limită să nu devină prea lungi pe ecrane uriașe */
+}
+.task-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0; /* O linie fină sub fiecare task, stil Todoist */
+    transition: background 0.2s;
+}
+
+.task-card:hover {
+    background-color: #fafafa;
+}
+.task-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 15px;
+    transition: 0.2s;
+}
+
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Ascundem butonul de ștergere implicit */
+.delete-btn {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+/* Îl afișăm doar când mouse-ul este deasupra cardului */
+.task-card:hover .delete-btn {
+    display: block;
+}
+
+/* Stil pentru checkbox */
+.complete-check {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

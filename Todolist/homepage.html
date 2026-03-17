@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todoit</title>
+    <link rel="stylesheet" href="homepage.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="main-container">
+        <section class="menu">
+        <div>
+            <a href="#section-task" id="btn-open-task" >➕Add task</a>
+        </div>
+        <div > 
+            <a href="#" id="link-inbox">📥Inbox </a>
+        </div>
+        <div >
+            <a href="#" id="link-today">📅Today</a>
+        </div>
+        <div >
+            <a href="#" id="upcoming">🗓️Upcoming</a>
+        </div>
+        <div >
+            <a href="#" id="link-completed">✅Completed</a>
+        </div>
+</section>
+<section class="tasks" id="section-task">
+<div id="add"> 
+<input type="text" id="text-task"class="task-input-title" placeholder="What needs to be done?">
+<input type="date" id="date">
+<div  class="priority-container"> 
+<button type="button" id="Priority">Priority</button>
+<div id="priority-menu" class="dropdown-content">
+<button type="button" class="priority-item" data-value="1" >🚩 Priority 1</button>
+<button type="button" class="priority-item" data-value="2">🚩 Priority 2</button>
+<button type="button" class="priority-item" data-value="3" >🚩 Priority 3</button>
+<button type="button" class="priority-item" data-value="4">🚩 Priority 4</button>
+    </div>
+</div>
+<button id="cancel"> Cancel</button>
+<button id="submit">Submit</button>
+</div>
+<div id="task-list-container">
+
+</div>
+
+<div id="task-list-today">
+
+
+</div>
+<div id="task-list-upcoming">
+
+</div>
+<div id="task-list-completed" style="display:none;"></div>
+</section>
+
+    </section>
+
+    <script src="homepage.js">
+
+    </script>
+</body>
+</html>
