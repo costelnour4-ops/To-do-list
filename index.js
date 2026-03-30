@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const upcoming_list = document.getElementById("upcoming");
     const linkCompleted = document.getElementById("link-completed");
 
-    // --- NAVIGARE ---
+    
     linkInbox.onclick = function (e) {
         e.preventDefault();
         element.style.display = "none";
@@ -48,18 +48,18 @@ document.addEventListener("DOMContentLoaded", function () {
         afiseaza_completate();
     };
 
-    // --- LOGICĂ FORMULAR ---
+   
     opentab.onclick = (e) => { e.preventDefault(); element.style.display = "block"; };
     closetab.onclick = () => { reset(); };
 
-    // Setare dată minimă
+    
     let now = new Date();
     let data_format = now.toISOString().split('T')[0];
     const dataacum = document.getElementById("date");
     dataacum.value = data_format;
     dataacum.setAttribute("min", data_format);
 
-    // Meniu Prioritate
+  
     const openpriority = document.getElementById("Priority");
     const priorityMenu = document.getElementById("priority-menu");
     let valoarePrioritate = "4";
@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Submit Task
     const submitBtn = document.getElementById("submit");
     const textInput = document.getElementById("text-task");
     const dateInput = document.getElementById("date");
@@ -114,11 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
         element.style.display = "none";
     }
 
-    // --- APELURI INIȚIALE (În interiorul listener-ului) ---
+   
     afiseazaTaskuri();
 });
 
-// --- FUNCȚII GLOBALE (Să fie accesibile de butoanele din carduri) ---
+
 
 function afiseazaTaskuri() {
     const container = document.getElementById("task-list-container");
@@ -189,7 +188,7 @@ function finalizeazaTask(id) {
     lista = lista.map(t => t.id === id ? { ...t, completat: true } : t);
     localStorage.setItem("taskurileMele", JSON.stringify(lista));
     
-    // Refresh la ce e vizibil
+   
     afiseazaTaskuri();
     afiseaza_azi();
     upcoming();
